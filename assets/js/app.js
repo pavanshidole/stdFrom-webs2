@@ -48,7 +48,33 @@ const onEdit=(ele)=>{
 
 }
 
+const onRemove=(ele)=>{
 
+    Swal.fire({
+        title: "Are you sure?",
+        text: "You won't be able to revert this!",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Yes, delete it!"
+      }).then((result) => {
+        if (result.isConfirmed) {
+            let removeId=ele.closest("tr").id;
+
+                let getIndex=stdArr.findIndex(std=> std.stdId===removeId);
+            
+                stdArr.splice(getIndex,1);
+            
+                localStorage.setItem("stdArr", JSON.stringify(stdArr));
+                ele.closest("tr").remove();
+
+                snackbar(` this stdInfo remove is SuccessFully!1` ,`success`);
+                onmsg();
+        }
+      });
+    
+}
 
 
 const tempArr=(arr)=>{
@@ -72,7 +98,6 @@ const tempArr=(arr)=>{
     })
 
     stdContainer.innerHTML=result;
-
 
 }
 
@@ -111,7 +136,6 @@ const createStd=(stdInfo)=>{
                      <td><button class="btn removeBtn btn-sm btn-outline-danger" onclick="onRemove(this)">Remove</button></td>
                                     
     `
-
     stdContainer.append(tr);
 }
 
@@ -135,15 +159,11 @@ const onStdForm=(ele)=>{
 
     localStorage.setItem("stdArr",JSON.stringify(stdArr));
 
-   
-
 }
 
 
 const onUpdateBtn=()=>{
     let updateId=localStorage.getItem("editId");
-
-    
 
     let updateObj={
         fname:fnameControl.value,
