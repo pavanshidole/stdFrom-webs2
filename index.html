@@ -31,7 +31,8 @@
                                 <label for="contact">Contact</label>
                                 <input type="text" class="form-control" id="contact">
                             </div>
-                            <button class="btn btn-sm btn-block btn-outline-warning">Add student</button>
+                            <button class="btn btn-sm btn-block btn-outline-warning" id="AddBtn">Add student</button>
+                            <button type="button" class="btn btn-sm btn-block btn-outline-warning d-none" id="updateBtn">update student</button>
                         </form>
                     </div>
                 </div>
@@ -51,10 +52,12 @@
                                         <td>Lname</td>
                                         <td>Email</td>
                                         <td>Contact</td>
+                                        <td>Edit</td>
+                                        <td>remove</td>
                                     </tr>
                                 </thead>
                                 <tbody id="stdContainer">
-
+                                    
                                 </tbody>
                             </table>
                         </div>

@@ -6,6 +6,8 @@ const contactControl=document.getElementById("contact");
 const stdContainer=document.getElementById("stdContainer");
 const info=document.getElementById("info");
 const card=document.getElementById("card");
+const AddBtn=document.getElementById("AddBtn");
+const updateBtn=document.getElementById("updateBtn");
 
 
 function uuid() {
@@ -17,6 +19,23 @@ function uuid() {
     });
 }
 
+
+const onEdit=(ele)=>{
+    let editId=ele.closest("tr").id;
+
+    let getObj=stdArr.find(std=>std.stdId===editId);
+
+    console.log(getObj);
+    console.log(editId);
+    fnameControl.value=getObj.fname;
+    lnameControl.value=getObj.lname;
+    emailControl.value=getObj.email;
+    contactControl.value=getObj.contact
+  
+    AddBtn.classList.add("d-none");
+    updateBtn.classList.remove("d-none");
+
+}
 
 
 
@@ -32,6 +51,8 @@ const tempArr=(arr)=>{
                                         <td>${std.lname}</td>
                                         <td>${std.email}</td>
                                         <td>${std.contact}</td>
+                                        <td><button class="btn editBtn btn-sm btn-outline-info" onclick="onEdit(this)">Edit</button></td>
+                                        <td><button class="btn removeBtn btn-sm btn-outline-danger" onclick="onRemove(this)">Remove</button></td>
                                     </tr>
         
         
@@ -66,7 +87,7 @@ if(stdArr.length > 0){
 
 const createStd=(stdInfo)=>{
     let tr=document.createElement("tr");
-    tr.id=stdInfo.id;
+    tr.id=stdInfo.stdId;
 
     tr.innerHTML=`
                 
@@ -75,6 +96,8 @@ const createStd=(stdInfo)=>{
                      <td>${stdInfo.lname}</td>
                      <td>${stdInfo.email}</td>
                      <td>${stdInfo.contact}</td>
+                     <td><button class="btn editBtn btn-sm btn-outline-info" onclick="onEdit(this)">Edit</button></td>
+                     <td><button class="btn removeBtn btn-sm btn-outline-danger" onclick="onRemove(this)">Remove</button></td>
                                     
     `
 
@@ -90,7 +113,7 @@ const onStdForm=(ele)=>{
         lname:lnameControl.value,
         email:emailControl.value,
         contact:parseInt(contactControl.value),
-        stdId:uuid,
+        stdId:uuid(),
     }
 
     stdArr.push(stdObj);
