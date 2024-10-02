@@ -17,19 +17,19 @@
                         <form id="stdForm">
                             <div class="form-group">
                                 <label for="fname">Fnane</label>
-                                <input type="text" class="form-control" id="fname">
+                                <input type="text"  required class="form-control" id="fname">
                             </div>
                             <div class="form-group">
                                 <label for="lname">Lname</label>
-                                <input type="text" class="form-control" id="lname">
+                                <input type="text" required class="form-control" id="lname">
                             </div>
                             <div class="form-group">
                                 <label for="email">Email</label>
-                                <input type="text" class="form-control" id="email">
+                                <input type="text" required class="form-control" id="email">
                             </div>
                             <div class="form-group">
                                 <label for="contact">Contact</label>
-                                <input type="text" class="form-control" id="contact">
+                                <input type="text" required class="form-control" id="contact">
                             </div>
                             <button class="btn btn-sm btn-block btn-outline-warning" id="AddBtn">Add student</button>
                             <button type="button" class="btn btn-sm btn-block btn-outline-warning d-none" id="updateBtn">update student</button>
@@ -66,6 +66,7 @@
             </div>
         </div>
     </div>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="./assets/js/app.js"></script>
 </body>
 </html>
